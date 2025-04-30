@@ -1,23 +1,26 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { generatePublicKeyForSol } from "@/lib/utils";
 
-interface SolanaWalletProps {
+interface WalletProps {
   mnemonic: string;
+  generatePublicKey: (
+    mnemonic: string,
+    currentIndex: number
+  ) => Promise<string>;
 }
 
-const SolanaWallet = ({ mnemonic }: SolanaWalletProps) => {
+const Wallet = ({ mnemonic, generatePublicKey }: WalletProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [publicKeys, setPublicKeys] = useState<string[]>([]);
-  const generatePublicKey = async () => {
-    const publicKey = await generatePublicKeyForSol(mnemonic, currentIndex);
+  const handlegGeneratePublicKey = async () => {
+    const publicKey = await generatePublicKey(mnemonic, currentIndex);
     setPublicKeys((prev) => [...prev, publicKey]);
     setCurrentIndex((prev) => prev + 1);
   };
 
   return (
     <div>
-      <Button onClick={generatePublicKey}>Add a Sol Wallet</Button>
+      <Button onClick={handlegGeneratePublicKey}>Add a Sol Wallet</Button>
       <div>
         <h1>
           My Sol Wallets:
@@ -30,4 +33,4 @@ const SolanaWallet = ({ mnemonic }: SolanaWalletProps) => {
   );
 };
 
-export default SolanaWallet;
+export default Wallet;
