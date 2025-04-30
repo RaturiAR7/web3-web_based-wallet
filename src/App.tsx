@@ -3,7 +3,7 @@ import { Button } from "./components/ui/button";
 import { useState } from "react";
 import { generateMnemonic } from "bip39";
 import Wallet from "./components/Wallet";
-import { generatePublicKeyForSol } from "./utils/solanaWallet";
+import { generatePublicKeyForSol } from "./lib/utils";
 
 function App() {
   const [mnemonic, setMnemonic] = useState<string>("");
