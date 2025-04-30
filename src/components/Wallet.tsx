@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 
 interface WalletProps {
+  title: string;
   mnemonic: string;
   generatePublicKey: (
     mnemonic: string,
@@ -9,7 +10,7 @@ interface WalletProps {
   ) => Promise<string>;
 }
 
-const Wallet = ({ mnemonic, generatePublicKey }: WalletProps) => {
+const Wallet = ({ title, mnemonic, generatePublicKey }: WalletProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [publicKeys, setPublicKeys] = useState<string[]>([]);
   const handlegGeneratePublicKey = async () => {
@@ -20,10 +21,10 @@ const Wallet = ({ mnemonic, generatePublicKey }: WalletProps) => {
 
   return (
     <div>
-      <Button onClick={handlegGeneratePublicKey}>Add a Sol Wallet</Button>
+      <Button onClick={handlegGeneratePublicKey}>Add a {title} Wallet</Button>
       <div>
         <h1>
-          My Sol Wallets:
+          My {title} Wallets:
           {publicKeys.map((p, index) => {
             return <div key={index}>{p}</div>;
           })}

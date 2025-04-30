@@ -3,7 +3,7 @@ import { Button } from "./components/ui/button";
 import { useState } from "react";
 import { generateMnemonic } from "bip39";
 import Wallet from "./components/Wallet";
-import { generatePublicKeyForSol } from "./lib/utils";
+import { generatePublicKeyForSol, generatePublicKeyForEth } from "./lib/utils";
 
 function App() {
   const [mnemonic, setMnemonic] = useState<string>("");
@@ -23,8 +23,16 @@ function App() {
       </div>
       {mnemonic && (
         <Wallet
+          title='Solana'
           mnemonic={mnemonic}
           generatePublicKey={generatePublicKeyForSol}
+        />
+      )}
+      {mnemonic && (
+        <Wallet
+          title='Ethereum'
+          mnemonic={mnemonic}
+          generatePublicKey={generatePublicKeyForEth}
         />
       )}
     </div>
