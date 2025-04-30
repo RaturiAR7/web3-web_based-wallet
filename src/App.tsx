@@ -13,14 +13,17 @@ function App() {
     setMnemonic(mne);
   };
   return (
-    <div>
+    <div className='flex flex-col px-20 gap-5 mx-auto'>
       <h1 className='text-3xl font-bold underline'>Hello Geeks!</h1>
-      <Button onClick={handleGenerateMnemonic}>Generate Mnemonic</Button>
-      {mnemonic && <p>{mnemonic}</p>}
-      <div>
-        <h2 className='text-2xl font-bold'>Generated Mnemonic:</h2>
-        <p className='text-lg'>{mnemonic}</p>
-      </div>
+      <Button className='' onClick={handleGenerateMnemonic}>
+        Generate Mnemonic
+      </Button>
+      {mnemonic && (
+        <div>
+          <h2 className='text-2xl font-bold'>Generated Mnemonic:</h2>
+          <p className='text-lg'>{mnemonic}</p>
+        </div>
+      )}
       {mnemonic && (
         <Wallet
           title='Solana'

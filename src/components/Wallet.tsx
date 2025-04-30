@@ -26,11 +26,13 @@ const Wallet = ({ title, mnemonic, generatePublicKey }: WalletProps) => {
   };
 
   return (
-    <div>
-      <Button onClick={handlegGeneratePublicKey}>Add a {title} Wallet</Button>
-      <Accordion type='single' collapsible>
+    <div className='flex flex-col justify-center items-center p-10 gap-5'>
+      <Button className='bg-gray-950' onClick={handlegGeneratePublicKey}>
+        Add a {title} Wallet
+      </Button>
+      <Accordion type='single' collapsible className='w-[50%]'>
         <AccordionItem value='item-1'>
-          <AccordionTrigger className='bg-gray-400 flex justify-center'>
+          <AccordionTrigger className='bg-[#242124] flex justify-center'>
             My {title} Wallets:
           </AccordionTrigger>
           {publicKeys.map((p, index) => {
