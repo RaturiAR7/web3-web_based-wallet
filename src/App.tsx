@@ -1,11 +1,29 @@
 import "./App.css";
 import { Button } from "./components/ui/button";
+import { useState } from "react";
+import { generateMnemonic } from "bip39";
+import { Buffer } from "buffer";
+
+// Make Buffer available globally
+window.Buffer = window.Buffer || Buffer;
 
 function App() {
+  const [mnemonic, setMnemonic] = useState<string>("");
+
+  const handleGenerateMnemonic = async () => {
+    const mne = await generateMnemonic();
+    setMnemonic(mne);
+  };
   return (
-    <>
-      <Button>Hello World</Button>
-    </>
+    <div>
+      <h1 className='text-3xl font-bold underline'>Hello world!</h1>
+      <Button onClick={handleGenerateMnemonic}>Generate Mnemonic</Button>
+      {mnemonic && <p>{mnemonic}</p>}
+      <div>
+        <h2 className='text-2xl font-bold'>Generated Mnemonic:</h2>
+        <p className='text-lg'>{mnemonic}</p>
+      </div>
+    </div>
   );
 }
 
