@@ -24,20 +24,26 @@ function App() {
           <p className='text-lg'>{mnemonic}</p>
         </div>
       )}
-      {mnemonic && (
-        <Wallet
-          title='Solana'
-          mnemonic={mnemonic}
-          generatePublicKey={generatePublicKeyForSol}
-        />
-      )}
-      {mnemonic && (
-        <Wallet
-          title='Ethereum'
-          mnemonic={mnemonic}
-          generatePublicKey={generatePublicKeyForEth}
-        />
-      )}
+      <div className='flex gap-10 w-full justify-between'>
+        <div className='w-full'>
+          {mnemonic && (
+            <Wallet
+              title='Solana'
+              mnemonic={mnemonic}
+              generatePublicKey={generatePublicKeyForSol}
+            />
+          )}
+        </div>
+        <div className='w-full'>
+          {mnemonic && (
+            <Wallet
+              title='Ethereum'
+              mnemonic={mnemonic}
+              generatePublicKey={generatePublicKeyForEth}
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 }
